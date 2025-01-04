@@ -1,54 +1,52 @@
 import random
 import string
 
-def generate_password_for_site(site, complexity, keyword="", favorite_symbol="", favorite_number=""):
+def generate_password_for_site(site, complexity, keyword="", favorite_symbol="", favorite_number="", password_length=None):
     site = site.lower()
     if site == "google":
-        length = 8 if complexity == "soft" else 10 if complexity == "medium" else 12
         characters = string.ascii_letters + string.digits
         rules = "Google: Include letters and digits, no special characters."
     elif site == "microsoft":
-        length = 10 if complexity == "soft" else 12 if complexity == "medium" else 15
         characters = string.ascii_letters + string.digits + string.punctuation
         rules = "Microsoft: Include letters, digits, and special characters."
     elif site == "chatgpt":
-        length = 12 if complexity == "soft" else 14 if complexity == "medium" else 16
         characters = string.ascii_letters + string.digits + string.punctuation
         rules = "ChatGPT: Include letters, digits, and special characters."
     elif site == "instagram":
-        length = 8 if complexity == "soft" else 10 if complexity == "medium" else 12
         characters = string.ascii_letters + string.digits + "_"
         rules = "Instagram: Include letters, digits, and underscores."
     elif site == "facebook":
-        length = 10 if complexity == "soft" else 12 if complexity == "medium" else 14
         characters = string.ascii_letters + string.digits + "#@"
         rules = "Facebook: Include letters, digits, and #/@ special characters."
     elif site == "github":
-        length = 12 if complexity == "soft" else 14 if complexity == "medium" else 16
         characters = string.ascii_letters + string.digits + "-_."
         rules = "GitHub: Include letters, digits, and -/_. special characters."
     elif site == "skillrack":
-        length = 9 if complexity == "soft" else 11 if complexity == "medium" else 13
         characters = string.ascii_letters + string.digits + string.punctuation
         rules = "SkillRack: Include letters, digits, and special characters."
     elif site == "internshala":
-        length = 8 if complexity == "soft" else 10 if complexity == "medium" else 12
         characters = string.ascii_letters + string.digits
         rules = "Internshala: Include letters and digits."
     elif site == "default":
-        length = 8 if complexity == "soft" else 10 if complexity == "medium" else 12
         characters = string.ascii_letters + string.digits + string.punctuation
         rules = "Default: Include letters, digits, and special characters."
     else:
         return "Invalid site name! Choose a valid option.", ""
 
-    
-    password = ''.join(random.choice(characters) for _ in range(length - len(keyword)))
+    if password_length is None:
+        try:
+            password_length = int(input(f"Enter desired password length for {site.capitalize()}: ").strip())
+        except ValueError:
+            print("Invalid input. Using a default length of 12.")
+            password_length = 12
 
-    
+    # Generate the random portion of the password
+    password = ''.join(random.choice(characters) for _ in range(password_length - len(keyword) - len(favorite_symbol) - len(favorite_number)))
+
+    # Customize password with the keyword, favorite symbol, and number
     customized_password = keyword + password + favorite_symbol + favorite_number
 
-    
+    # Ensure compliance with rules if applicable
     if not any(char.islower() for char in customized_password):
         customized_password += random.choice(string.ascii_lowercase)
     if not any(char.isupper() for char in customized_password):
@@ -65,30 +63,52 @@ def generate_password_for_site(site, complexity, keyword="", favorite_symbol="",
 
     return customized_password, rules
 
-
+# Enhanced user interface
 print("=" * 40)
 print("\tWelcome to the Password Generator!")
 print("=" * 40)
 print("Supported Sites: Google, Microsoft, ChatGPT, Instagram, Facebook, GitHub, SkillRack, Internshala, Default")
 print("=" * 40)
 
-
+# Prompt user for inputs
 site_name = input("Enter the site for which password is required: ").strip()
+try:
+    password_length = int(input(f"Enter the desired password length for {site_name.capitalize()}: ").strip())
+except ValueError:
+    print("Invalid input. Using a default length of 12.")
+    password_length = 12
+
 complexity = input("Enter desired complexity (soft, medium, high): ").strip().lower()
 favorite_keyword = input("Enter your favorite keyword (optional, press Enter to skip): ").strip()
 favorite_symbol = input("Enter your favorite symbol (optional, press Enter to skip): ").strip()
 favorite_number = input("Enter your favorite number (1 to 9, optional, press Enter to skip): ").strip()
 
- 
-passwords = []
-for _ in range(3):
-    password, rules = generate_password_for_site(site_name, complexity, favorite_keyword, favorite_symbol, favorite_number)
-    passwords.append(password)
+if complexity == "medium":
+    medium_passwords = [
+        generate_password_for_site(site_name, "medium", favorite_keyword, favorite_symbol, favorite_number, password_length)[0]
+        for _ in range(3)
+    ]
+    print("\nGenerated Medium Complexity Passwords:")
+    for i, pwd in enumerate(medium_passwords, 1):
+        print(f"Medium {i}: {pwd}")
 
-if passwords[0] != "Invalid site name! Choose a valid option.":
-    print("\nPassword Rules:", rules)
-    print("\nGenerated Passwords:")
-    for i, pw in enumerate(passwords, 1):
-        print(f"Password {i}: {pw}")
+elif complexity == "soft":
+    soft_passwords = [
+        generate_password_for_site(site_name, "soft", favorite_keyword, favorite_symbol, favorite_number, password_length)[0]
+        for _ in range(3)
+    ]
+    print("\nGenerated Soft Complexity Passwords:")
+    for i, pwd in enumerate(soft_passwords, 1):
+        print(f"Soft {i}: {pwd}")
+
+elif complexity == "high":
+    high_passwords = [
+        generate_password_for_site(site_name, "high", favorite_keyword, favorite_symbol, favorite_number, password_length)[0]
+        for _ in range(3)
+    ]
+    print("\nGenerated High Complexity Passwords:")
+    for i, pwd in enumerate(high_passwords, 1):
+        print(f"High {i}: {pwd}")
+
 else:
-    print(passwords[0])
+    print("Invalid complexity option selected. Please choose soft, medium, or high.")
