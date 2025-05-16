@@ -49,5 +49,47 @@ Built with PyQt5:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/Carpediem1.git
-cd Carpediem1
+git clone https://github.com/your-username/Carpediem.git
+cd Carpediem1'''
+Install Dependencies
+pip install -r requirements.txt
+
+▶️ How to Run
+python main.py
+Make sure your microphone is working. The assistant will greet you and start listening.
+
+🗂️ Project Structure
+Carpediem1/
+├── main.py               # Main assistant logic
+├── gui.py                # PyQt5 auto-generated GUI code
+├── Downloads/            # Contains animated GIFs
+├── assets/               # (Optional) Sounds, icons
+├── requirements.txt      # Dependencies
+└── README.md             # You are here
+
+🔧 Customization
+Add More Apps: Update app_paths dictionary to include new applications.
+
+Edit Search Paths: Modify the search_dirs list for file search locations.
+
+Add Commands: Extend Tasks() function to support more voice queries.
+
+Improve GUI: Edit .ui file in Qt Designer and regenerate gui.py.
+
+🧠 Future Plans
+Add persistent note/reminder storage (SQLite or JSON).
+
+Smart home integration via IFTTT/MQTT.
+
+GUI microphone animation & personality upgrades.
+
+Profile learning – recognize user preferences over time.
+
+👨‍💻 Author
+Anto Sam – B.Tech CSE
+A passionate developer focused on AI assistants, data science, and automation.
+
+
+
+
+
