@@ -48,9 +48,9 @@ Built with PyQt5:
 ## 🖥️ Installation
 
 ### 1. Clone the repository
-```bash
+
 git clone https://github.com/your-username/Carpediem.git
-cd Carpediem1'''
+cd Carpediem
 Install Dependencies
 pip install -r requirements.txt
 
