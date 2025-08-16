@@ -1,94 +1,128 @@
 # 🤖 Carpediem – Your Smart Personal Digital Assistant
 
-Carpediem is a voice-activated personal assistant built with Python and PyQt5 that helps you perform a variety of tasks — from launching apps and searching files to controlling system settings and reading jokes. Think of it as your own desktop AI companion, always ready to assist with your day-to-day digital needs.
+![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)
+![PyQt5](https://img.shields.io/badge/PyQt5-GUI-green?logo=qt)
+![License](https://img.shields.io/badge/License-MIT-orange)
+
+**Carpediem** is a voice-activated desktop assistant built with Python and PyQt5.  
+It helps you perform tasks like launching apps, searching files, controlling system settings, taking notes, and even having fun with jokes — all through simple **voice commands**.  
+
+Think of it as your own **AI-powered desktop companion**. 🚀
 
 ---
 
-## 🚀 Features
+## ✨ Features
 
 ### 🎙️ Voice Commands
-- **Open Applications:** Just say "Open Chrome", "Launch Notepad", etc.
-- **File Search & Open:** Ask “Find my resume” or “Open project report” and Carpediem1 will locate and open it.
-- **Wikipedia Search:** “Tell me about Alan Turing” – get quick facts instantly.
-- **Play Music:** Start a random track from your music directory.
-- **Jokes & Fun:** “Tell me a joke” for a laugh.
-- **IP & Location Info:** Ask for your public IP or where you are.
-- **Browser Shortcuts:** Open YouTube or Google hands-free.
+- **Open Applications:** “Open Chrome”, “Launch Notepad”, etc.
+- **File Search & Open:** “Find my resume”, “Open project report” → Carpediem1 locates and opens files.
+- **Wikipedia Search:** “Tell me about Alan Turing” → quick facts.
+- **Play Music:** Plays a random song from your music folder.
+- **Jokes & Fun:** “Tell me a joke” → get a laugh.
+- **IP & Location Info:** Ask “What’s my IP?” or “Where am I?”
+- **Browser Shortcuts:** Open YouTube, Google, etc.
 
 ### ⚙️ Smart System Utilities
-- **Take Notes / Set Reminders:** “Remind me in 15 minutes” or “Take a note.”
-- **Scheduled Shutdowns / Screenshots:** “Shutdown in 30 minutes”, “Take a screenshot.”
-- **Control Brightness, Volume, Wi-Fi:** (Future ready via PowerShell or Windows APIs)
-- **ChatGPT API Integration:** Get intelligent responses to complex questions (optional).
-- **Desktop Notification Reader:** Reads active system notifications (experimental).
+- **Take Notes / Set Reminders:** “Remind me in 15 minutes”, “Take a note.”
+- **System Tasks:** “Shutdown in 30 minutes”, “Take a screenshot.”
+- **System Controls (Future-Ready):** Adjust brightness, volume, Wi-Fi.
+- **ChatGPT Integration (Optional):** Intelligent Q&A responses.
+- **Notification Reader (Experimental):** Reads desktop notifications.
 
 ### 🧠 AI-Powered File Search
-Uses fuzzy matching to locate files even if the spoken name isn’t exact.
+- Uses **fuzzy matching** to find files even with imperfect spoken names.
 
-### 📊 Dynamic GUI
-Built with PyQt5:
-- Displays real-time date and time.
-- Shows live logs of your commands and system responses.
-- Animated feedback using GIFs.
+### 📊 Interactive GUI
+- Built with **PyQt5**
+- Displays real-time **date & time**
+- Shows live **command logs**
+- Animated **GIF feedback**
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠️ Tech Stack
 
-- Python 3.9+
-- PyQt5 (GUI)
-- pyttsx3 (Text-to-Speech)
-- speech_recognition (Voice Input)
-- wikipedia, pyjokes, requests, webbrowser
-- difflib (Fuzzy Matching)
-- OS & sys for app/file control
+- **Language:** Python 3.9+
+- **GUI Framework:** PyQt5
+- **Libraries:**  
+  - `pyttsx3` → Text-to-Speech  
+  - `speech_recognition` → Voice input  
+  - `wikipedia`, `pyjokes`, `requests`, `webbrowser`  
+  - `difflib` → AI-powered fuzzy matching  
+- **System Tools:** OS, sys
 
 ---
 
 ## 🖥️ Installation
 
-### 1. Clone the repository
+### 1. Clone Repository
+```bash
+git clone https://github.com/your-username/Carpediem1.git
+cd Carpediem1
+```
+### 2. Install Depedencies
 
-git clone https://github.com/your-username/Carpediem.git
-cd Carpediem
-Install Dependencies
+```
 pip install -r requirements.txt
-
-▶️ How to Run
+```
+### 3.Run the Assistant
+```
 python main.py
-Make sure your microphone is working. The assistant will greet you and start listening.
+```
+🎤 Make sure your microphone is enabled. Carpediem1 will greet you and start listening.
 
-🗂️ Project Structure
-Carpediem1/
-├── main.py               # Main assistant logic
-├── gui.py                # PyQt5 auto-generated GUI code
-├── Downloads/            # Contains animated GIFs
-├── assets/               # (Optional) Sounds, icons
-├── requirements.txt      # Dependencies
-└── README.md             # You are here
+## 📂 Project Structure
 
-🔧 Customization
-Add More Apps: Update app_paths dictionary to include new applications.
+Project Structure:
+ Carpediem1/
+ ```
+├── main.py # Main assistant logic
+├── gui.py # PyQt5 auto-generated GUI code
+├── Downloads/ # Animated GIFs used in GUI
+├── assets/ # (Optional) Sounds, icons
+├── requirements.txt # Python dependencies
+└── README.md # Documentation
+```
 
-Edit Search Paths: Modify the search_dirs list for file search locations.
+---
 
-Add Commands: Extend Tasks() function to support more voice queries.
+## 🔧 Customization
 
-Improve GUI: Edit .ui file in Qt Designer and regenerate gui.py.
+- **Add More Apps:** Update `app_paths` dictionary in `main.py`.
+- **Edit Search Paths:** Modify `search_dirs` list for file search locations.
+- **Add More Commands:** Extend the `Tasks()` function with custom voice actions.
+- **Improve GUI:** Edit `.ui` file in Qt Designer and regenerate `gui.py` using `pyuic5`.
 
-🧠 Future Plans
-Add persistent note/reminder storage (SQLite or JSON).
+---
 
-Smart home integration via IFTTT/MQTT.
+## 🧠 Roadmap
 
-GUI microphone animation & personality upgrades.
+- ✅ Voice-based file search with AI-powered fuzzy matching  
+- ⏳ Persistent notes & reminders using SQLite/JSON  
+- ⏳ Smart home integration (IoT / MQTT / IFTTT)  
+- ⏳ Personality upgrade: customizable wake words & voices  
+- ⏳ GUI enhancements: microphone animation & notifications  
 
-Profile learning – recognize user preferences over time.
+---
 
-👨‍💻 Author
-Anto Sam – B.Tech CSE
-A passionate developer focused on AI assistants, data science, and automation.
+## 🤝 Contributing
 
+Contributions are welcome!  
+
+1. **Fork** the repository  
+2. **Create** a new feature branch (`git checkout -b feature-name`)  
+3. **Commit** your changes (`git commit -m "Added feature xyz"`)  
+4. **Push** to your branch (`git push origin feature-name`)  
+5. **Open a Pull Request** 🎉  
+
+---
+
+## 👨‍💻 Author
+
+**Anto Sam Christ A – B.Tech CSE**  
+🚀 Passionate developer exploring AI assistants, data science, and automation.  
+
+- 📧 Email: *[antosamchrist18@gmail.com]*    
 
 
 
